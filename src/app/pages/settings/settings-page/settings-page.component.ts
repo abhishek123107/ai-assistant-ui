@@ -7,25 +7,25 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-    <div class="p-8">
+    <div class="p-4 sm:p-6 lg:p-8">
       <div class="max-w-4xl mx-auto">
         <!-- Header -->
-        <div class="mb-8">
-          <h1 class="text-3xl font-bold text-gray-900 mb-2">Settings</h1>
-          <p class="text-gray-600">Manage your account preferences and configurations</p>
+        <div class="mb-6 sm:mb-8">
+          <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Settings</h1>
+          <p class="text-sm sm:text-base text-gray-600">Manage your account preferences and configurations</p>
         </div>
 
         <!-- Settings Sections -->
-        <div class="space-y-6">
+        <div class="space-y-4 sm:space-y-6">
           <!-- Appearance -->
-          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <h2 class="text-lg font-semibold text-gray-900 mb-4">Appearance</h2>
+          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6">
+            <h2 class="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">Appearance</h2>
             
-            <div class="space-y-4">
-              <div class="flex items-center justify-between">
-                <div>
+            <div class="space-y-3 sm:space-y-4">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div class="flex-1">
                   <label class="text-sm font-medium text-gray-700">Dark Mode</label>
-                  <p class="text-sm text-gray-500">Toggle dark theme for the interface</p>
+                  <p class="text-xs sm:text-sm text-gray-500">Toggle dark theme for the interface</p>
                 </div>
                 <label class="relative inline-flex items-center cursor-pointer">
                   <input type="checkbox" [(ngModel)]="darkMode" class="sr-only peer">
@@ -33,10 +33,10 @@ import { FormsModule } from '@angular/forms';
                 </label>
               </div>
 
-              <div class="flex items-center justify-between">
-                <div>
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div class="flex-1">
                   <label class="text-sm font-medium text-gray-700">Compact View</label>
-                  <p class="text-sm text-gray-500">Use more compact layout</p>
+                  <p class="text-xs sm:text-sm text-gray-500">Use more compact layout</p>
                 </div>
                 <label class="relative inline-flex items-center cursor-pointer">
                   <input type="checkbox" [(ngModel)]="compactView" class="sr-only peer">
@@ -47,14 +47,14 @@ import { FormsModule } from '@angular/forms';
           </div>
 
           <!-- Notifications -->
-          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <h2 class="text-lg font-semibold text-gray-900 mb-4">Notifications</h2>
+          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6">
+            <h2 class="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">Notifications</h2>
             
-            <div class="space-y-4">
-              <div class="flex items-center justify-between">
-                <div>
+            <div class="space-y-3 sm:space-y-4">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div class="flex-1">
                   <label class="text-sm font-medium text-gray-700">Email Notifications</label>
-                  <p class="text-sm text-gray-500">Receive email updates about your activity</p>
+                  <p class="text-xs sm:text-sm text-gray-500">Receive email updates about your activity</p>
                 </div>
                 <label class="relative inline-flex items-center cursor-pointer">
                   <input type="checkbox" [(ngModel)]="emailNotifications" class="sr-only peer">
@@ -62,10 +62,10 @@ import { FormsModule } from '@angular/forms';
                 </label>
               </div>
 
-              <div class="flex items-center justify-between">
-                <div>
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div class="flex-1">
                   <label class="text-sm font-medium text-gray-700">Desktop Notifications</label>
-                  <p class="text-sm text-gray-500">Show desktop notifications</p>
+                  <p class="text-xs sm:text-sm text-gray-500">Show desktop notifications</p>
                 </div>
                 <label class="relative inline-flex items-center cursor-pointer">
                   <input type="checkbox" [(ngModel)]="desktopNotifications" class="sr-only peer">
@@ -76,16 +76,16 @@ import { FormsModule } from '@angular/forms';
           </div>
 
           <!-- Account -->
-          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <h2 class="text-lg font-semibold text-gray-900 mb-4">Account</h2>
+          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6">
+            <h2 class="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">Account</h2>
             
-            <div class="space-y-4">
+            <div class="space-y-3 sm:space-y-4">
               <div>
                 <label class="text-sm font-medium text-gray-700">Username</label>
                 <input 
                   type="text" 
                   [(ngModel)]="username"
-                  class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  class="mt-1 w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
               </div>
 
@@ -94,7 +94,7 @@ import { FormsModule } from '@angular/forms';
                 <input 
                   type="email" 
                   [(ngModel)]="email"
-                  class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  class="mt-1 w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
               </div>
             </div>
@@ -104,9 +104,9 @@ import { FormsModule } from '@angular/forms';
           <div class="flex justify-end">
             <button 
               (click)="saveSettings()"
-              class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-200"
+              class="px-4 sm:px-6 py-2 bg-blue-500 text-white text-sm rounded-lg hover:bg-blue-600 transition-colors duration-200"
             >
-              Save Settings
+              Save Changes
             </button>
           </div>
         </div>

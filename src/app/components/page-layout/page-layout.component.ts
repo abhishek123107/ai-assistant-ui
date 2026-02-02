@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { HeaderComponent } from '../header/header.component';
@@ -8,18 +8,34 @@ import { HeaderComponent } from '../header/header.component';
   standalone: true,
   imports: [CommonModule, SidebarComponent, HeaderComponent],
   template: `
-    <div class="flex h-screen bg-gray-100">
+    <div class="flex h-screen bg-gray-100 relative">
+      <!-- Mobile Sidebar Overlay -->
+      <div 
+        *ngIf="isMobileSidebarOpen" 
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+        (click)="toggleMobileSidebar()"
+      ></div>
+      
       <!-- Sidebar -->
-      <app-sidebar></app-sidebar>
+      <div 
+        class="fixed lg:relative z-50 lg:z-auto transform transition-transform duration-300 ease-in-out"
+        [class.translate-x-0]="isMobileSidebarOpen"
+        [class.-translate-x-full]="!isMobileSidebarOpen"
+        [class.translate-x-0]="true"
+      >
+        <app-sidebar></app-sidebar>
+      </div>
       
       <!-- Main Content Area -->
-      <div class="flex-1 flex flex-col overflow-hidden">
+      <div class="flex-1 flex flex-col overflow-hidden min-w-0">
         <!-- Header -->
-        <app-header></app-header>
+        <app-header (menuToggle)="toggleMobileSidebar()"></app-header>
         
         <!-- Page Content (Router Outlet) -->
-        <main class="flex-1 overflow-hidden">
-          <ng-content></ng-content>
+        <main class="flex-1 overflow-hidden bg-white">
+          <div class="h-full overflow-y-auto">
+            <ng-content></ng-content>
+          </div>
         </main>
       </div>
     </div>
@@ -29,7 +45,46 @@ import { HeaderComponent } from '../header/header.component';
       display: block;
       height: 100vh;
     }
+    
+    /* Custom scrollbar for mobile */
+    @media (max-width: 1023px) {
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 2px;
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: #a8a8a8;
+      }
+    }
   `]
 })
-export class PageLayoutComponent {
+export class PageLayoutComponent implements OnInit, OnDestroy {
+  isMobileSidebarOpen = false;
+
+  ngOnInit(): void {
+    // Listen for custom closeSidebar event
+    window.addEventListener('closeSidebar', this.closeMobileSidebar.bind(this));
+  }
+
+  ngOnDestroy(): void {
+    // Clean up event listener
+    window.removeEventListener('closeSidebar', this.closeMobileSidebar.bind(this));
+  }
+
+  toggleMobileSidebar(): void {
+    this.isMobileSidebarOpen = !this.isMobileSidebarOpen;
+  }
+
+  closeMobileSidebar(): void {
+    this.isMobileSidebarOpen = false;
+  }
 }

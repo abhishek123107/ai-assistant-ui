@@ -15,40 +15,41 @@ export interface NavItem {
   standalone: true,
   imports: [CommonModule, RouterLink],
   template: `
-    <div class="w-64 h-full bg-sidebar-bg flex flex-col">
+    <div class="w-64 h-full bg-sidebar-bg flex flex-col fixed lg:relative transform transition-transform duration-300 ease-in-out">
       <!-- Logo Section -->
-      <div class="p-6 border-b border-gray-700">
+      <div class="p-4 sm:p-6 border-b border-gray-700">
         <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
             </svg>
           </div>
-          <div>
-            <h1 class="text-xl font-bold text-sidebar-text">AI Assistant</h1>
-            <p class="text-xs text-sidebar-textSecondary">Enterprise Platform</p>
+          <div class="min-w-0 flex-1">
+            <h1 class="text-lg sm:text-xl font-bold text-sidebar-text truncate">AI Assistant</h1>
+            <p class="text-xs text-sidebar-textSecondary hidden sm:block">Enterprise Platform</p>
           </div>
         </div>
       </div>
 
       <!-- Navigation -->
-      <nav class="flex-1 p-4 space-y-6">
+      <nav class="flex-1 p-3 sm:p-4 space-y-4 sm:space-y-6 overflow-y-auto">
         <!-- Main Section -->
         <div>
-          <h3 class="text-xs font-semibold text-sidebar-textSecondary uppercase tracking-wider mb-3">Main</h3>
+          <h3 class="text-xs font-semibold text-sidebar-textSecondary uppercase tracking-wider mb-2 sm:mb-3 px-2 sm:px-3">Main</h3>
           <ul class="space-y-1">
             <li *ngFor="let item of mainItems">
               <a 
                 [routerLink]="item.route" 
-                class="flex items-center space-x-3 px-3 py-2.5 rounded-lg transition-colors duration-200"
+                (click)="closeSidebarOnMobile()"
+                class="flex items-center space-x-2 sm:space-x-3 px-2 sm:px-3 py-2 sm:py-2.5 rounded-lg transition-colors duration-200"
                 [class.bg-sidebar-active]="isActive(item.route)"
                 [class.text-white]="isActive(item.route)"
                 [class.text-sidebar-text.hover:bg-sidebar-hover]="!isActive(item.route)"
               >
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="item.icon"></path>
                 </svg>
-                <span class="font-medium">{{ item.label }}</span>
+                <span class="font-medium text-sm sm:text-base truncate">{{ item.label }}</span>
               </a>
             </li>
           </ul>
@@ -56,20 +57,21 @@ export interface NavItem {
 
         <!-- Tools Section -->
         <div>
-          <h3 class="text-xs font-semibold text-sidebar-textSecondary uppercase tracking-wider mb-3">Tools</h3>
+          <h3 class="text-xs font-semibold text-sidebar-textSecondary uppercase tracking-wider mb-2 sm:mb-3 px-2 sm:px-3">Tools</h3>
           <ul class="space-y-1">
             <li *ngFor="let item of toolsItems">
               <a 
                 [routerLink]="item.route" 
-                class="flex items-center space-x-3 px-3 py-2.5 rounded-lg transition-colors duration-200"
+                (click)="closeSidebarOnMobile()"
+                class="flex items-center space-x-2 sm:space-x-3 px-2 sm:px-3 py-2 sm:py-2.5 rounded-lg transition-colors duration-200"
                 [class.bg-sidebar-active]="isActive(item.route)"
                 [class.text-white]="isActive(item.route)"
                 [class.text-sidebar-text.hover:bg-sidebar-hover]="!isActive(item.route)"
               >
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="item.icon"></path>
                 </svg>
-                <span class="font-medium">{{ item.label }}</span>
+                <span class="font-medium text-sm sm:text-base truncate">{{ item.label }}</span>
               </a>
             </li>
           </ul>
@@ -123,5 +125,10 @@ export class SidebarComponent {
 
   isActive(route: string): boolean {
     return this.router.url === route;
+  }
+
+  closeSidebarOnMobile(): void {
+    // Emit a custom event to notify parent component
+    window.dispatchEvent(new CustomEvent('closeSidebar'));
   }
 }

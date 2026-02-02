@@ -8,21 +8,21 @@ import { InputBoxComponent } from '../input-box/input-box.component';
   standalone: true,
   imports: [CommonModule, MessageBubbleComponent, InputBoxComponent],
   template: `
-    <div class="flex-1 flex flex-col bg-gray-50">
+    <div class="flex-1 flex flex-col bg-gray-50 h-full">
       <!-- Messages Container -->
       <div 
         #messagesContainer
-        class="flex-1 overflow-y-auto px-6 py-4 space-y-2 scrollbar-thin"
+        class="flex-1 overflow-y-auto px-3 sm:px-4 lg:px-6 py-3 sm:py-4 space-y-2 scrollbar-thin"
       >
-        <div *ngIf="messages.length === 0" class="flex items-center justify-center h-full">
-          <div class="text-center">
-            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div *ngIf="messages.length === 0" class="flex items-center justify-center h-full px-4">
+          <div class="text-center max-w-sm mx-auto">
+            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <svg class="w-6 h-6 sm:w-10 sm:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
               </svg>
             </div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">Start a conversation</h3>
-            <p class="text-sm text-gray-600">Ask me anything! I'm here to help with programming, courses, and technical questions.</p>
+            <h3 class="text-base sm:text-lg font-semibold text-gray-900 mb-2">Start a conversation</h3>
+            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">Ask me anything! I'm here to help with programming, courses, and technical questions.</p>
           </div>
         </div>
         
