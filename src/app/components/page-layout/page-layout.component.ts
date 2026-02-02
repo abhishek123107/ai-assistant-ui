@@ -24,7 +24,7 @@ import { isPlatformBrowser } from '@angular/common';
         [class.-translate-x-full]="!isMobileSidebarOpen"
         [class.translate-x-0]="true"
         [class.w-56]="true"
-        [class.xs:w-16]="true"
+        [class.xs:w-12]="true"
         [class.sm:w-52]="true"
         [class.md:w-60]="true"
         [class.lg:w-64]="true"
