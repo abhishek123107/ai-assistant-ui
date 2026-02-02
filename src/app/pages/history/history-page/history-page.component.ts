@@ -57,10 +57,9 @@ interface ChatHistory {
         </div>
 
         <!-- Chat History List -->
-        <div class="space-y-4">
-          <div 
+        <div 
             *ngFor="let chat of filteredChats"
-            class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200 cursor-pointer"
+            class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200 cursor-pointer mb-4"
           >
             <div class="flex items-start justify-between">
               <div class="flex-1">
@@ -104,7 +103,6 @@ interface ChatHistory {
               </div>
             </div>
           </div>
-        </div>
 
         <!-- Empty State -->
         <div *ngIf="filteredChats.length === 0" class="text-center py-12">
