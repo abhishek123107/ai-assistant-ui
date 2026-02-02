@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { HeaderComponent } from '../header/header.component';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-page-layout',
@@ -69,15 +70,24 @@ import { HeaderComponent } from '../header/header.component';
 })
 export class PageLayoutComponent implements OnInit, OnDestroy {
   isMobileSidebarOpen = false;
+  private isBrowser: boolean;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   ngOnInit(): void {
-    // Listen for custom closeSidebar event
-    window.addEventListener('closeSidebar', this.closeMobileSidebar.bind(this));
+    // Listen for custom closeSidebar event only in browser
+    if (this.isBrowser) {
+      window.addEventListener('closeSidebar', this.closeMobileSidebar.bind(this));
+    }
   }
 
   ngOnDestroy(): void {
-    // Clean up event listener
-    window.removeEventListener('closeSidebar', this.closeMobileSidebar.bind(this));
+    // Clean up event listener only in browser
+    if (this.isBrowser) {
+      window.removeEventListener('closeSidebar', this.closeMobileSidebar.bind(this));
+    }
   }
 
   toggleMobileSidebar(): void {

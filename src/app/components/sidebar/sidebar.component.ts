@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 
 export interface NavItem {
   id: string;
@@ -121,14 +122,16 @@ export class SidebarComponent {
     }
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, @Inject(PLATFORM_ID) private platformId: Object) {}
 
   isActive(route: string): boolean {
     return this.router.url === route;
   }
 
   closeSidebarOnMobile(): void {
-    // Emit a custom event to notify parent component
-    window.dispatchEvent(new CustomEvent('closeSidebar'));
+    // Emit a custom event to notify parent component only in browser
+    if (isPlatformBrowser(this.platformId)) {
+      window.dispatchEvent(new CustomEvent('closeSidebar'));
+    }
   }
 }

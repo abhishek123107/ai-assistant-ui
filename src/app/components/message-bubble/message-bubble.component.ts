@@ -61,7 +61,7 @@ export interface Message {
             class="mt-1 px-1 text-xs text-gray-500"
             [class.text-right]="message.sender === 'user'"
           >
-            {{ formatTime(message.timestamp) }}
+            {{ formatTimestamp(message.timestamp) }}
           </div>
         </div>
       </div>
