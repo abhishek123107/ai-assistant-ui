@@ -5,13 +5,25 @@ module.exports = {
   ],
   theme: {
     screens: {
-      'xs': '475px',    // Extra small phones
-      'sm': '640px',    // Small phones and large tablets
-      'md': '768px',    // Tablets
-      'lg': '1024px',   // Small laptops and large tablets
-      'xl': '1280px',   // Laptops
-      '2xl': '1536px',  // Large laptops and desktops
-      '3xl': '1920px',  // Extra large desktops
+      '0': '0px',        // Ultra small phones
+      '1': '320px',      // Small phones
+      '2': '375px',      // Medium phones
+      '3': '425px',      // Large phones
+      '4': '500px',      // Extra large phones
+      '5': '600px',      // Small tablets
+      '6': '768px',      // Tablets
+      '7': '1024px',     // Small laptops and large tablets
+      '8': '1280px',     // Laptops
+      '9': '1536px',     // Large laptops and desktops
+      '10': '1920px',    // Extra large desktops
+      // Keep original breakpoints for compatibility
+      'xs': '475px',     // Extra small phones
+      'sm': '640px',     // Small phones and large tablets
+      'md': '768px',     // Tablets
+      'lg': '1024px',    // Small laptops and large tablets
+      'xl': '1280px',    // Laptops
+      '2xl': '1536px',   // Large laptops and desktops
+      '3xl': '1920px',   // Extra large desktops
     },
     extend: {
       colors: {
