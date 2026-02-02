@@ -9,20 +9,27 @@ import { isPlatformBrowser } from '@angular/common';
   standalone: true,
   imports: [CommonModule, SidebarComponent, HeaderComponent],
   template: `
-    <div class="flex h-screen bg-gray-100 relative">
+    <div class="flex h-screen bg-gray-100 relative overflow-hidden">
       <!-- Mobile Sidebar Overlay -->
       <div 
         *ngIf="isMobileSidebarOpen" 
-        class="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 xs:hidden sm:hidden md:hidden lg:hidden"
         (click)="toggleMobileSidebar()"
       ></div>
       
       <!-- Sidebar -->
       <div 
-        class="fixed lg:relative z-50 lg:z-auto transform transition-transform duration-300 ease-in-out"
+        class="fixed xs:relative sm:relative md:relative lg:relative z-50 lg:z-auto transform transition-all duration-300 ease-in-out"
         [class.translate-x-0]="isMobileSidebarOpen"
         [class.-translate-x-full]="!isMobileSidebarOpen"
         [class.translate-x-0]="true"
+        [class.w-56]="true"
+        [class.xs:w-48]="true"
+        [class.sm:w-52]="true"
+        [class.md:w-60]="true"
+        [class.lg:w-64]="true"
+        [class.xl:w-72]="true"
+        [class.xl:w-80]="true"
       >
         <app-sidebar></app-sidebar>
       </div>
@@ -34,7 +41,7 @@ import { isPlatformBrowser } from '@angular/common';
         
         <!-- Page Content (Router Outlet) -->
         <main class="flex-1 overflow-hidden bg-white">
-          <div class="h-full overflow-y-auto">
+          <div class="h-full overflow-y-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-400">
             <ng-content></ng-content>
           </div>
         </main>
