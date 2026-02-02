@@ -24,12 +24,22 @@ import { isPlatformBrowser } from '@angular/common';
         [class.-translate-x-full]="!isMobileSidebarOpen"
         [class.translate-x-0]="true"
         [class.w-56]="true"
-        [class.xs:w-48]="true"
+        [class.xs:w-16]="true"
         [class.sm:w-52]="true"
         [class.md:w-60]="true"
         [class.lg:w-64]="true"
         [class.xl:w-72]="true"
         [class.xl:w-80]="true"
+        [class.fixed]="isMobileSidebarOpen"
+        [class.xs:fixed]="isMobileSidebarOpen"
+        [class.sm:fixed]="isMobileSidebarOpen"
+        [class.md:fixed]="isMobileSidebarOpen"
+        [class.lg:relative]="true"
+        [class.xl:relative]="true"
+        [class.xl:relative]="true"
+        [class.top-0]="isMobileSidebarOpen"
+        [class.left-0]="isMobileSidebarOpen"
+        [class.h-full]="true"
       >
         <app-sidebar></app-sidebar>
       </div>

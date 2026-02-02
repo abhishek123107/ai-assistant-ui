@@ -16,9 +16,9 @@ export interface NavItem {
   standalone: true,
   imports: [CommonModule, RouterLink],
   template: `
-    <div class="w-56 xs:w-16 sm:w-52 md:w-60 lg:w-64 xl:w-72 2xl:w-80 h-full bg-sidebar-bg flex flex-col fixed xs:relative sm:relative md:relative lg:relative transform transition-all duration-300 ease-in-out shadow-xl">
+    <div class="w-56 xs:w-16 sm:w-52 md:w-60 lg:w-64 xl:w-72 2xl:w-80 h-full bg-sidebar-bg flex flex-col transform transition-all duration-300 ease-in-out shadow-xl xs:shadow-2xl">
       <!-- Logo Section -->
-      <div class="p-3 xs:p-2 sm:p-4 md:p-5 lg:p-6 border-b border-gray-700">
+      <div class="p-3 xs:p-3 sm:p-4 md:p-5 lg:p-6 border-b border-gray-700">
         <div class="flex items-center space-x-2 xs:justify-center sm:space-x-3">
           <div class="w-6 h-6 xs:w-8 xs:h-8 sm:w-8 sm:w-8 md:w-10 md:h-10 lg:w-10 lg:w-10 xl:w-12 xl:w-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0 hover:scale-105 transition-transform duration-200">
             <svg class="w-3 h-3 xs:w-5 xs:h-5 sm:w-5 sm:w-5 md:w-6 md:h-6 lg:w-6 lg:w-6 xl:w-7 xl:w-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -37,10 +37,10 @@ export interface NavItem {
       </div>
 
       <!-- Navigation -->
-      <nav class="flex-1 p-2 xs:p-1 sm:p-3 md:p-4 lg:p-4 space-y-3 xs:space-y-2 sm:space-y-3 md:space-y-4 lg:space-y-6 overflow-y-auto scrollbar-thin scrollbar-track-gray-800 scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500">
+      <nav class="flex-1 p-2 xs:p-2 sm:p-3 md:p-4 lg:p-4 space-y-3 xs:space-y-3 sm:space-y-3 md:space-y-4 lg:space-y-6 overflow-y-auto scrollbar-thin scrollbar-track-gray-800 scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500">
         <!-- Main Section -->
         <div>
-          <h3 class="text-2xs xs:text-xs sm:text-xs md:text-xs lg:text-xs font-semibold text-sidebar-textSecondary uppercase tracking-wider mb-2 xs:mb-1 sm:mb-2 md:mb-3 lg:mb-3 px-1 xs:px-1 sm:px-2 md:px-3 lg:px-3 xs:hidden sm:block">
+          <h3 class="text-2xs xs:text-xs sm:text-xs md:text-xs lg:text-xs font-semibold text-sidebar-textSecondary uppercase tracking-wider mb-2 xs:mb-2 sm:mb-2 md:mb-3 lg:mb-3 px-1 xs:px-1 sm:px-2 md:px-3 lg:px-3 xs:hidden sm:block">
             Main
           </h3>
           <ul class="space-y-1">
@@ -48,13 +48,13 @@ export interface NavItem {
               <a 
                 [routerLink]="item.route" 
                 (click)="closeSidebarOnMobile()"
-                class="flex items-center xs:justify-center space-x-1 xs:space-x-0 sm:space-x-2 md:space-x-3 lg:space-x-3 px-2 xs:px-1 sm:px-2 md:px-3 lg:px-3 py-1.5 xs:py-2 sm:py-2 md:py-2.5 lg:py-2.5 rounded-lg transition-all duration-200 hover:scale-[1.02]"
+                class="flex items-center xs:justify-center space-x-1 xs:space-x-0 sm:space-x-2 md:space-x-3 lg:space-x-3 px-2 xs:px-2 sm:px-2 md:px-3 lg:px-3 py-1.5 xs:py-3 sm:py-2 md:py-2.5 lg:py-2.5 rounded-lg transition-all duration-200 hover:scale-[1.02] xs:hover:scale-110"
                 [class.bg-sidebar-active]="isActive(item.route)"
                 [class.text-white]="isActive(item.route)"
                 [class.text-sidebar-text.hover:bg-sidebar-hover]="!isActive(item.route)"
                 [title]="item.label"
               >
-                <svg class="w-3 h-3 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-5 lg:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-3 h-3 xs:w-6 xs:h-6 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-5 lg:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="item.icon"></path>
                 </svg>
                 <span class="font-medium text-2xs xs:text-xs sm:text-sm md:text-sm lg:text-base truncate xs:hidden sm:block">
@@ -67,7 +67,7 @@ export interface NavItem {
 
         <!-- Tools Section -->
         <div>
-          <h3 class="text-2xs xs:text-xs sm:text-xs md:text-xs lg:text-xs font-semibold text-sidebar-textSecondary uppercase tracking-wider mb-2 xs:mb-1 sm:mb-2 md:mb-3 lg:mb-3 px-1 xs:px-1 sm:px-2 md:px-3 lg:px-3 xs:hidden sm:block">
+          <h3 class="text-2xs xs:text-xs sm:text-xs md:text-xs lg:text-xs font-semibold text-sidebar-textSecondary uppercase tracking-wider mb-2 xs:mb-2 sm:mb-2 md:mb-3 lg:mb-3 px-1 xs:px-1 sm:px-2 md:px-3 lg:px-3 xs:hidden sm:block">
             Tools
           </h3>
           <ul class="space-y-1">
@@ -75,13 +75,13 @@ export interface NavItem {
               <a 
                 [routerLink]="item.route" 
                 (click)="closeSidebarOnMobile()"
-                class="flex items-center xs:justify-center space-x-1 xs:space-x-0 sm:space-x-2 md:space-x-3 lg:space-x-3 px-2 xs:px-1 sm:px-2 md:px-3 lg:px-3 py-1.5 xs:py-2 sm:py-2 md:py-2.5 lg:py-2.5 rounded-lg transition-all duration-200 hover:scale-[1.02]"
+                class="flex items-center xs:justify-center space-x-1 xs:space-x-0 sm:space-x-2 md:space-x-3 lg:space-x-3 px-2 xs:px-2 sm:px-2 md:px-3 lg:px-3 py-1.5 xs:py-3 sm:py-2 md:py-2.5 lg:py-2.5 rounded-lg transition-all duration-200 hover:scale-[1.02] xs:hover:scale-110"
                 [class.bg-sidebar-active]="isActive(item.route)"
                 [class.text-white]="isActive(item.route)"
                 [class.text-sidebar-text.hover:bg-sidebar-hover]="!isActive(item.route)"
                 [title]="item.label"
               >
-                <svg class="w-3 h-3 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-5 lg:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-3 h-3 xs:w-6 xs:h-6 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-5 lg:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="item.icon"></path>
                 </svg>
                 <span class="font-medium text-2xs xs:text-xs sm:text-sm md:text-sm lg:text-base truncate xs:hidden sm:block">
