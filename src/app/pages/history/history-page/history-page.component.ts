@@ -135,56 +135,7 @@ export class HistoryPageComponent {
   selectedCategory: string = 'all';
   sortBy: string = 'recent';
 
-  chatHistory: ChatHistory[] = [
-    {
-      id: '1',
-      title: 'Angular 18 Setup Help',
-      lastMessage: 'Thanks for the help! The Angular 18 setup is now working perfectly...',
-      timestamp: new Date('2024-01-15T10:30:00'),
-      messageCount: 23,
-      category: 'programming'
-    },
-    {
-      id: '2',
-      title: 'TypeScript Best Practices',
-      lastMessage: 'Can you explain more about interface vs type aliases in TypeScript?',
-      timestamp: new Date('2024-01-14T15:45:00'),
-      messageCount: 15,
-      category: 'programming'
-    },
-    {
-      id: '3',
-      title: 'Course Recommendations',
-      lastMessage: 'Which courses would you recommend for a beginner in web development?',
-      timestamp: new Date('2024-01-13T09:20:00'),
-      messageCount: 8,
-      category: 'courses'
-    },
-    {
-      id: '4',
-      title: 'API Integration Issues',
-      lastMessage: 'The CORS issue is resolved. Thanks for the detailed explanation!',
-      timestamp: new Date('2024-01-12T14:15:00'),
-      messageCount: 31,
-      category: 'technical'
-    },
-    {
-      id: '5',
-      title: 'General Introduction',
-      lastMessage: 'Hello! I\'m new here and wanted to explore what you can help with...',
-      timestamp: new Date('2024-01-11T11:00:00'),
-      messageCount: 12,
-      category: 'general'
-    },
-    {
-      id: '6',
-      title: 'React vs Angular Discussion',
-      lastMessage: 'That comparison table was really helpful for making my decision...',
-      timestamp: new Date('2024-01-10T16:30:00'),
-      messageCount: 19,
-      category: 'programming'
-    }
-  ];
+  chatHistory: ChatHistory[] = [];
 
   get filteredChats() {
     let filtered = this.chatHistory;
